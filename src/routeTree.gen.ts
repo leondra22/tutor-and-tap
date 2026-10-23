@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BookingsRouteImport } from './routes/bookings'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as TutoringRouteImport } from './routes/tutoring'
+import { Route as FacilitiesIndexRouteImport } from './routes/facilities.index'
+import { Route as FacilitiesIdRouteImport } from './routes/facilities.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingsRoute = BookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TutoringRoute = TutoringRouteImport.update({
+  id: '/tutoring',
+  path: '/tutoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacilitiesIndexRoute = FacilitiesIndexRouteImport.update({
+  id: '/facilities/',
+  path: '/facilities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacilitiesIdRoute = FacilitiesIdRouteImport.update({
+  id: '/facilities/$id',
+  path: '/facilities/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/bookings': typeof BookingsRoute
+  '/home': typeof HomeRoute
+  '/notifications': typeof NotificationsRoute
+  '/tutoring': typeof TutoringRoute
+  '/facilities/$id': typeof FacilitiesIdRoute
+  '/facilities/': typeof FacilitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/bookings': typeof BookingsRoute
+  '/home': typeof HomeRoute
+  '/notifications': typeof NotificationsRoute
+  '/tutoring': typeof TutoringRoute
+  '/facilities/$id': typeof FacilitiesIdRoute
+  '/facilities': typeof FacilitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/bookings': typeof BookingsRoute
+  '/home': typeof HomeRoute
+  '/notifications': typeof NotificationsRoute
+  '/tutoring': typeof TutoringRoute
+  '/facilities/$id': typeof FacilitiesIdRoute
+  '/facilities/': typeof FacilitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/bookings'
+    | '/home'
+    | '/notifications'
+    | '/tutoring'
+    | '/facilities/$id'
+    | '/facilities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/bookings'
+    | '/home'
+    | '/notifications'
+    | '/tutoring'
+    | '/facilities/$id'
+    | '/facilities'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/bookings'
+    | '/home'
+    | '/notifications'
+    | '/tutoring'
+    | '/facilities/$id'
+    | '/facilities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BookingsRoute: typeof BookingsRoute
+  HomeRoute: typeof HomeRoute
+  NotificationsRoute: typeof NotificationsRoute
+  TutoringRoute: typeof TutoringRoute
+  FacilitiesIdRoute: typeof FacilitiesIdRoute
+  FacilitiesIndexRoute: typeof FacilitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bookings': {
+      id: '/bookings'
+      path: '/bookings'
+      fullPath: '/bookings'
+      preLoaderRoute: typeof BookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tutoring': {
+      id: '/tutoring'
+      path: '/tutoring'
+      fullPath: '/tutoring'
+      preLoaderRoute: typeof TutoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facilities/': {
+      id: '/facilities/'
+      path: '/facilities'
+      fullPath: '/facilities/'
+      preLoaderRoute: typeof FacilitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facilities/$id': {
+      id: '/facilities/$id'
+      path: '/facilities/$id'
+      fullPath: '/facilities/$id'
+      preLoaderRoute: typeof FacilitiesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BookingsRoute: BookingsRoute,
+  HomeRoute: HomeRoute,
+  NotificationsRoute: NotificationsRoute,
+  TutoringRoute: TutoringRoute,
+  FacilitiesIdRoute: FacilitiesIdRoute,
+  FacilitiesIndexRoute: FacilitiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

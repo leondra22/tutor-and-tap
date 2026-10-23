@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- App data lives in src/lib/store.ts (localStorage + simulated services); pure rules in src/lib/rules.ts are unit-tested — keeps demo logic testable without a backend.
