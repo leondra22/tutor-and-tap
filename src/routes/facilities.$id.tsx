@@ -32,7 +32,7 @@ function CheckIn() {
   }
   function simulateScan() {
     setScanning(true);
-    setTimeout(() => { const c = FACILITY_CODES[facility.id]; setCode(c); setScanning(false); void submit(c); }, 1300);
+    setTimeout(() => { const c = FACILITY_CODES[facility.id] ?? ""; setCode(c); setScanning(false); void submit(c); }, 1300);
   }
 
   if (result?.ok) {

@@ -42,11 +42,13 @@ export function checkEligibility(facilityId: string, restricted: boolean): { ok:
 }
 
 export function slotTimestamp(date: string, time: string) {
-  const [hm, ap] = time.split(" ");
-  let [h, m] = hm.split(":").map(Number);
+  const [hm = "0:00", ap] = time.split(" ");
+  const parts = hm.split(":").map(Number);
+  let h = parts[0] ?? 0;
+  const m = parts[1] ?? 0;
   if (ap === "PM" && h !== 12) h += 12;
   if (ap === "AM" && h === 12) h = 0;
-  const [y, mo, d] = date.split("-").map(Number);
+  const [y = 0, mo = 1, d = 1] = date.split("-").map(Number);
   return new Date(y, mo - 1, d, h, m).getTime();
 }
 
